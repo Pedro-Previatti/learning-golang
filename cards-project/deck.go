@@ -19,7 +19,7 @@ func newDeck() deck {
 	 	cardSuits has all the possible suits of a deck of cards
 	 	cardValues has all the possible values of a deck of cards
 	*/
-	cardSuits := []string{"Spaces", "Clubs", "Hearts", "Diamonds"}
+	cardSuits := []string{"Spades", "Clubs", "Hearts", "Diamonds"}
 	cardValues := []string{"Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"}
 
 	// 2 for loops to go through the suits and values appending to the cards slice variable
