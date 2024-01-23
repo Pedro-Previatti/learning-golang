@@ -47,3 +47,14 @@ func (s int_s) random(i int, seed rand.Source) int_s {
 
 	return s
 }
+
+// simple function checking if generated numbers are even or odd
+func (s int_s) checkEvenOdd() {
+	for i := range s {
+		if s[i]/2 == 0 {
+			fmt.Printf("\n(%v: %2v): Even", i, s[i])
+		} else {
+			fmt.Printf("\n(%v: %2v): Odd", i, s[i])
+		}
+	}
+}
