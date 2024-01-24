@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
 	// Maps store data
@@ -9,16 +11,15 @@ func main() {
 		"green": "#008000",
 		"blue":  "#0000ff",
 	}
+	// deleting the red hax from the colors map
+	// delete(colors, "red")
 
-	numbers := make(map[int]int)
+	printMap(colors)
+}
 
-	numbers[1], numbers[2] = 0, 1
-	// numbers[2] = "1"
-	// this will not run because the map is of int: int
-
-	fmt.Println(colors)
-	// fmt.Println(colors.red)
-
-	fmt.Println(numbers)
-
+// iterating through a map
+func printMap(c map[string]string) {
+	for color, hex := range c {
+		fmt.Println("Hex for", color, "is", hex)
+	}
 }
