@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"time"
 )
 
 func main() {
@@ -23,8 +24,13 @@ func main() {
 	}
 
 	// infinitly checking status
-	for {
-		go checkTrafic(<-c, c) // blocking call
+	for l := range c {
+		// function literal
+		go func(link string) {
+			// waiting 5 seconds before the checkTrafic() call
+			time.Sleep(5 * time.Second)
+			checkTrafic(link, c)
+		}(l)
 	}
 }
 
@@ -41,6 +47,6 @@ func checkTrafic(s string, c chan string) {
 		return
 	}
 
-	fmt.Println("Site status: UP")
+	fmt.Println("	Site status: UP")
 	c <- s
 }
