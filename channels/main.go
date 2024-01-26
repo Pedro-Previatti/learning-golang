@@ -22,21 +22,25 @@ func main() {
 		go checkTrafic(link, c)
 	}
 
-	fmt.Println(<-c)
+	// infinitly checking status
+	for {
+		go checkTrafic(<-c, c) // blocking call
+	}
 }
 
 // checking requests are slow, because it waits a response for the previous request
 // checking trafic from link
 func checkTrafic(s string, c chan string) {
 	_, err := http.Get(s) // blocking call
+	fmt.Println("Checking status for:", s)
+
 	// if the get request's status is not 200 err is returned not null so site is probably down
 	if err != nil {
-		fmt.Println("Status check for:", s, "DOWN")
-		c <- "DOWN"
+		fmt.Println("	Site status: DOWN")
+		c <- s
 		return
 	}
 
-	fmt.Println("Status check for:", s, "OK")
-	c <- "OK"
-
+	fmt.Println("Site status: UP")
+	c <- s
 }
