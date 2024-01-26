@@ -1,0 +1,18 @@
+Create a program that reads the contents of a text file 
+and then prints your content on the terminal.
+
+The file to be opened must be supplied as an argument to
+the program when it is run in the terminal. For example,
+'go run main.go myfile.txt should open create the file 
+myfile.txt
+
+To read the arguments given to a program, you can reference
+the variable 'os.Args', which is a slice of type string
+
+To open a file, check the 'Open' function documentation in 
+the package 'os' - https://golang.org/pkg/os/#Open
+
+What interfaces does 'File Type' implement?
+
+If the 'file type implements the Reader interface', you
+can reuse this io.Copy function!
